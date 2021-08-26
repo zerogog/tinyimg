@@ -1,0 +1,21 @@
+version: 0
+
+## test
+oss:
+  key_id: "xxx"
+  key_secrect: "xxx"
+  bucket: "xxx"
+  region: "xxx"
+  endpoint: "xxxx"
+  path: "xxxx"
+
+## pro
+# oss:
+#   key_id: "xxxx"
+#   key_secrect: "xxxx"
+#   bucket: "xxxx"
+
+local:
+  path: "./asserts"
+  zippath: "./zip"
+
