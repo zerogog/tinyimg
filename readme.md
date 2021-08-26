@@ -12,9 +12,11 @@ tinyImages
 将需要处理的图片放入`asserts`文件夹，之后在终端输入
 
 ```bash
-node index.js
+yarn tiny
 ```
 
+
+如果需要上传，请参看 src/main.js 中的代码，并配置 config.yaml。
 
 ## 参考
 
