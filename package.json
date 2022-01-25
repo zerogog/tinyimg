@@ -11,7 +11,8 @@
     "clear": "rm -rf ./zip/*",
     "clear-asserts": "rm -rf ./asserts/*",
     "build": "rollup --config rollup.config.js",
-    "tiny": "node ./src/main.js"
+    "tiny": "node ./src/main.js",
+    "test": "node ./test/utils_test.js"
   },
   "dependencies": {
     "@squoosh/lib": "^0.3.1",

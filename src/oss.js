@@ -29,5 +29,6 @@ const upload = async () => {
     await _uploadToOss(config, path.resolve(__dirname, config.local.zippath, file))
   }
 }
+
 // _uploadToOss(config, './asserts/test.png')
 exports.upload = upload

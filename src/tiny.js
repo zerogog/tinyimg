@@ -41,6 +41,7 @@ const _tinyImg = async (imagePool, config, filepath, ext = "") => {
     if (!fs.existsSync(pathOpt.dir)) {
       fs.mkdirSync(pathOpt.dir, { recursive: true });
     }
+
     fs.writeFileSync(path.resolve(pathOpt.dir, pathOpt.base), zipImg.binary);
   } catch (e) {
     // 记录部分png图片被强制命名为jpg
@@ -56,13 +57,13 @@ const _tinyImg = async (imagePool, config, filepath, ext = "") => {
 
 const tinyImgs = async (config) => {
   const imagePool = new ImagePool();
-  // const files = getFilesByDir(config.local.path);
   const files = getFilesByDir(config.local.path);
 
   for (const file of files) {
     log({ code: "INFO", message: `zip ${file.name}` });
     await _tinyImg(imagePool, config, file.path);
   }
+
   for (const item of retryList) {
     log({ code: "INFO", message: `retry ${item.filepath}` });
     await _tinyImg(imagePool, config, item.filepath, item.tryExt);
