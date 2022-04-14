@@ -1,9 +1,9 @@
-const fs = require("fs");
+const  fs  = require("fs");
 const yaml = require("yaml");
 const path = require("path");
 
-const getConfig = () => {
-  const file = fs.readFileSync("./config.yaml", "utf8");
+const getConfig = (configpath = "../config.yaml") => {
+  const file = fs.readFileSync(path.resolve(__dirname, configpath), "utf8");
   const config = yaml.parse(file);
   return config;
 };
@@ -40,3 +40,4 @@ module.exports = {
   getConfig,
   getFilesByDir,
 };
+

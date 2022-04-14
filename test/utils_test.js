@@ -1,40 +1,43 @@
 const assert = require("assert");
-const utils = require("../src/utils");
-const path = require("path")
+const utils = require("../src/utils.js");
+const path = require("path");
+const fs = require("fs");
 
-const { tinyImgs, retryList } = require("../src/tiny")
+const { tinyImgs } = require("../src/tiny");
 
-let testFunArr = []
+let testFunArr = [];
+
 function testGetFilesByDir() {
   let files = utils.getFilesByDir("../");
   assert.ok(files.length > 0);
   assert.ok(files[0].name);
 }
-testFunArr.push(testGetFilesByDir)
-
+testFunArr.push(testGetFilesByDir);
 
 function testConfig() {
-  const config = utils.getConfig()
-  assert.ok(config) 
-  assert.ok(config.local) 
-  assert.ok(config.local.path) 
-  console.log("local: ", config.local)
+  const config = utils.getConfig();
+  assert.ok(config);
+  assert.ok(config.local);
+  assert.ok(config.local.path);
+  console.log("local: ", config.local);
 }
-testFunArr.push(testConfig)
+testFunArr.push(testConfig);
 
 function testTiny() {
-  let config = utils.getConfig()  
+  let config = utils.getConfig();
 
-  config.local.path = path.resolve(__dirname, "../asserts")
-  config.local.zip = path.resolve(__dirname, "../zip")
+  config.local.path = path.resolve(__dirname, "../asserts");
+  config.local.zip = path.resolve(__dirname, "../zip");
 
-  tinyImgs(config)
-  assert.ok(true)
+  tinyImgs(config.local.path, config.local.zip);
+
+  assert.ok(fs.existsSync(config.local.zip + "/DAA20210929970036.jpeg"));
 }
-testFunArr.push(testTiny)
+
+testFunArr.push(testTiny);
 
 function test() {
-  testFunArr.forEach(func => func())
+  testFunArr.forEach((func) => func());
 }
 
 test();

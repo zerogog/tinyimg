@@ -6,17 +6,20 @@
   "repository": "none",
   "author": "zerogog",
   "license": "MIT",
+  "bin": {
+    "tiny": "src/cli.js"
+  },
   "scripts": {
     "lint": "npx eslint --ignore-pattern './node_modules/**' --fix '*.js'",
     "clear": "rm -rf ./zip/*",
     "clear-asserts": "rm -rf ./asserts/*",
     "build": "rollup --config rollup.config.js",
-    "tiny": "node ./src/main.js",
     "test": "node ./test/utils_test.js"
   },
   "dependencies": {
     "@squoosh/lib": "^0.3.1",
     "ali-oss": "^6.16.0",
+    "command-line-interface": "^4.0.23",
     "yaml": "^1.10.2"
   },
   "devDependencies": {
@@ -28,6 +31,7 @@
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
-    "rollup": "^2.55.1"
+    "rollup": "^2.55.1",
+    "rollup-plugin-copy": "^3.4.0"
   }
 }
